@@ -1,4 +1,7 @@
-max_size = 999
+puts "number of max digits"
+max_digits = gets.chomp.to_i
+
+max_size = ("9"*max_digits).to_i
 result = 1
 
 max_size.downto(1) { |i|
@@ -12,4 +15,5 @@ max_size.downto(1) { |i|
 		end
 	}
 }
+puts "largest palindrome for "+max_digits.to_s+" digits is:"
 puts result
