@@ -1,4 +1,5 @@
 #original_num = 600851475143
+
 puts "please enter a number to factor"
 original_num = gets.chomp.to_i
 num = original_num
