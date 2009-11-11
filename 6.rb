@@ -1,12 +1,3 @@
-def check(num,max)
-	max.downto(1) { |i|
-		if num%i != 0
-			return false
-		end
-	}
-	return true
-end
-
 puts "find natural differences from 1 to..."
 number = gets.chomp.to_i
 sum_square = 0
