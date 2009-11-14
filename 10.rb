@@ -14,10 +14,10 @@ def clear()
 	print "\e[2J\e[f" 
 end
 def progress(current_percent,num_items,total_items)
-#clear()
 	new_percent = (num_items.to_f/total_items.to_f*100).floor
 	# THIS PRINTS A PROGRESS INDICATOR WHEN PROGRESS HAS BEEN MADE
 	if new_percent > current_percent
+		clear()
 		puts ('x'*new_percent)+('.'*(100-new_percent))
 	end
 	return new_percent
