@@ -1,4 +1,3 @@
-
 def get_triangle_number(num)
 	total = 0
 	1.upto(num) { |i|
@@ -6,27 +5,23 @@ def get_triangle_number(num)
 	}
 	return total
 end
-
 def get_divisors_count(num)
-	# START OFF AT 2, SINCE ALL NUMBERS, EXCEPT 1 HAVE 2 DIVISORS
-	if num != 1
-		count = 2
-	else
-		count = 1
-	end
-	max = (num/2).floor
-	2.upto(max) { |i|
+	count = 0
+	2.upto((Math.sqrt(num)).floor) { |i|
 		if num%i == 0
 			count += 1
 		end
 	}
+	count = count * 2
 	return count
 end
 
-number = 1
-until (count = get_divisors_count(get_triangle_number(number))) > 5
+num_div = 500
+number = 2
+count = 0
+until (count = get_divisors_count(get_triangle_number(number))) > num_div
 	number += 1	
 end
+#puts count.to_s+"\t"+number.to_s
 
-puts
-puts get_triangle_number(number)
+puts '','the answer is: '+get_triangle_number(number).to_s
