@@ -26,12 +26,12 @@ def get_product(matrix, x, y, x_direction, y_direction)
 	x = x.to_i
 	y = y.to_i
 	# CHECK WE ARE LOOKING WITHIN THE MATRIX
-	if ((x+(x_direction*4)) < 0) or ((x+(x_direction*4)) > (matrix.length-1)) or ((y+(y_direction*4)) < 0) or ((y+(y_direction*4)) > (matrix[x].length-1))
+	if ((x+(x_direction*3)) < 0) or ((x+(x_direction*3)) > (matrix.length-1)) or ((y+(y_direction*3)) < 0) or ((y+(y_direction*3)) > (matrix[x].length-1))
 		return return_result
 	end
 	product = 1 
 	pieces = Array.new()
-	0.upto(4) { |num|
+	0.upto(3) { |num|
 		product *= matrix[x+(x_direction*num)][y+(y_direction*num)].to_i
 		pieces.push(matrix[x+(x_direction*num)][y+(y_direction*num)].to_i)
 	}
