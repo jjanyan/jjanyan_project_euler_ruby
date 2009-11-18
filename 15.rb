@@ -1,4 +1,9 @@
 # number of routes going only left or down in a 20x20 grid, starting at top left, finishing at the bottom right
+# 1 - 2
+# 2 - 6
+# 3 - 20
+# 4 - 70
+# 5 - 252
 # D,D,D,D,D,D,D,D,D,D,R,R,R,R,R,R,R,R,R,R
 # D,D,D,D,D,D,D,D,D,R,D,R,R,R,R,R,R,R,R,R
 # R,R,R,R,R,R,R,R,R,R,D,D,D,D,D,D,D,D,D,D
@@ -32,18 +37,27 @@ end
 class Recusion
 	attr_accessor :size
 	def initialize
-		@size = 10
+		@size = 2
 	end
 	def go(path)
 		if path.count_right > @size or path.count_down > @size
 			return 0
 		end
 		if path.count_right == @size and path.count_down == @size
+			puts path.path.join(',')
 			return 1
 		end
 		total = 0
-		right = path.clone().increment_right
-		down = path.clone().increment_down
+		right = Path.new
+		right.count_right	= path.count_right.to_i
+		right.count_down	= path.count_down.to_i
+		right.path		= Marshal.load(Marshal.dump(path.path))
+		right.increment_right
+		down = Path.new
+		down.count_right	= path.count_right.to_i
+		down.count_down		= path.count_down.to_i
+		down.path		= Marshal.load(Marshal.dump(path.path))
+		down.increment_down
 		total += self.go(right)
 		total += self.go(down)
 		return total
@@ -59,12 +73,10 @@ class Path
 	def increment_right()
 		@count_right += 1
 		@path.push('right')
-		return self
 	end
 	def increment_down()
 		@count_down += 1
 		@path.push('down')
-		return self
 	end
 end
 
